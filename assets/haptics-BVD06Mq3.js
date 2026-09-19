@@ -1,0 +1,1 @@
+function e(e=10){if(typeof window<`u`&&typeof navigator<`u`&&`vibrate`in navigator)try{navigator.vibrate(e)}catch{}}export{e as t};
