@@ -2,7 +2,7 @@
   "id": "/",
   "name": "MaarifOS — Akış Pusulası",
   "short_name": "MaarifOS",
-  "description": "Emine Öğretmen için yerel öncelikli okul öncesi öğretmen çalışma ekosistemi.",
+  "description": "Okul öncesi öğretmenlerimiz için MEB Maarif Modeli uyumlu yerel öncelikli çalışma ve planlama ekosistemi.",
   "lang": "tr-TR",
   "dir": "ltr",
   "start_url": "/",

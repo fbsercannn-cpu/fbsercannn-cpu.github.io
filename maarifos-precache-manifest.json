@@ -18,8 +18,8 @@
       "size": 16489
     },
     {
-      "path": "assets/action-center-service-77PQnCRE.js",
-      "sha256": "6968072ba46d0dd5049646b5c404867e1afad4d8edbab80c700942c4fb4bb50e",
+      "path": "assets/action-center-service-DiRuOvQN.js",
+      "sha256": "9badbe8b332bd53bb9f49e33faceb3c785b32aa341fb9862168cbf36c9ffcbb2",
       "size": 7885
     },
     {
@@ -28,13 +28,13 @@
       "size": 5306
     },
     {
-      "path": "assets/ActionCenter-CvCPiTAi.js",
-      "sha256": "963d1ebd10429b723ffd8ff78a221b5c11cbe2d9626b512d8dbf1c6eb602a0dd",
+      "path": "assets/ActionCenter-Dd76CcpK.js",
+      "sha256": "869322953a15a4d3dbef0f1f79ac436c7768e7dd0f93f1fc55ef3ed25a382c50",
       "size": 14048
     },
     {
-      "path": "assets/activity-observation-seed-CJBs2Zgz.js",
-      "sha256": "cf058ae9e047bf741191201a48559ed429801272d674d0a8e2c7a128a2555d76",
+      "path": "assets/activity-observation-seed-BWoCgF5E.js",
+      "sha256": "9258c85bafe608079e52add70fd95ab0b3cff504e64480cd4653ff250e3b47fc",
       "size": 1590
     },
     {
@@ -48,13 +48,13 @@
       "size": 25522
     },
     {
-      "path": "assets/activity-studio-lbN2hRwn.js",
-      "sha256": "6abb6939145c0cec20dc07587cb5d70ee49e3de3a3a17d7662f47f843358ff0e",
+      "path": "assets/activity-studio-DOIOvGOx.js",
+      "sha256": "f622ca50d551dbea57e3d9221fc82f6bdc742576ec9ae020fd5d5861183761f1",
       "size": 43204
     },
     {
-      "path": "assets/activity-studio-model-6klAdqUH.js",
-      "sha256": "c1c5f7949c77088e89b1738ca26a9cbad96839e4ca9f6bb2f5ddcf2f533a2522",
+      "path": "assets/activity-studio-model-CDzKr3kP.js",
+      "sha256": "fee119c3a74c4ea677090f3213b8a621c99635ec92982415ea7d32f68d870927",
       "size": 25293
     },
     {
@@ -103,9 +103,9 @@
       "size": 4231
     },
     {
-      "path": "assets/attendance-excel-service-DEGCiJu3.js",
-      "sha256": "e37312383092e42826841055f365d62c9b776842193c316f9d312a9567ce4330",
-      "size": 4179
+      "path": "assets/attendance-excel-service-l-qCVBz1.js",
+      "sha256": "44010f3a275bdd6fce35bce327d28fdf5639e8fc7eadd15bb345c48edfa374bd",
+      "size": 4187
     },
     {
       "path": "assets/AttendanceCalculationPanel-BKyspz8U.js",
@@ -118,14 +118,14 @@
       "size": 2330
     },
     {
+      "path": "assets/AttendancePanels-Crwwiat6.js",
+      "sha256": "169a068e54ac1bff0dd2fdd8313e84ea405ba93c6fdb57891e28d968c4e1951f",
+      "size": 14891
+    },
+    {
       "path": "assets/AttendancePanels-CwnGakv2.css",
       "sha256": "684a014ddceb6d75e38525f43b842fe8657e165b0a2de23f2284052b20350f0a",
       "size": 3042
-    },
-    {
-      "path": "assets/AttendancePanels-Dync_fAa.js",
-      "sha256": "23f924bbd7def4a6f0420395489c578ffbcd27701a9a29462339a3c5e60bb971",
-      "size": 14891
     },
     {
       "path": "assets/backup-capacity-BTI_ZaWn.js",
@@ -133,8 +133,8 @@
       "size": 1310
     },
     {
-      "path": "assets/backup-service-Bj0E3HPa.js",
-      "sha256": "841745ddc1bf2aa2e23ef17427fc5fc7971ee2e0753808baac75c0d02affd501",
+      "path": "assets/backup-service-CUsiKy8P.js",
+      "sha256": "581b306093cddbd40eeb0ade86837ecd9e159955482e3d4d2154f7b62f2ba002",
       "size": 10446
     },
     {
@@ -213,18 +213,18 @@
       "size": 6430
     },
     {
-      "path": "assets/class-roster-document-DrRi5irn.js",
-      "sha256": "1f1f63b62935b12270bf25624bd4e13595d223178d2530d39ddaa748be272766",
+      "path": "assets/class-roster-document-BD9pqna4.js",
+      "sha256": "efd9d7b4af8ee833060340ef8826e69f61a18198df5365bf8deb07a4537c4f96",
       "size": 43373
     },
     {
-      "path": "assets/class-roster-file-actions-CZeKVDFI.js",
-      "sha256": "6d55ff65a98c92d3fdd5efa0082dea2b4bf23bfb9b5f1cfac17279578aae8159",
+      "path": "assets/class-roster-file-actions-CXVRNtWy.js",
+      "sha256": "503c59d81dcc7e0f9416b06b75766afe2e43d8ae7c1fcc04bcb09cf8defbc865",
       "size": 4075
     },
     {
-      "path": "assets/class-roster-spreadsheet-BWCAopUr.js",
-      "sha256": "15b67b80bf7a27f1dbf2b3d269ef061c52630829b50c5aa02799a548cc752f9b",
+      "path": "assets/class-roster-spreadsheet-Cj_3zB5O.js",
+      "sha256": "564a3d04d875e9561dd3a35d5df5df597b34f1db08f42090db62f73622e456c4",
       "size": 36958
     },
     {
@@ -233,8 +233,8 @@
       "size": 2035
     },
     {
-      "path": "assets/ClassDutySchedulePanel-gitqcR86.js",
-      "sha256": "2f2d2c6cc893d0ab5e93905ec01a0e520d9e907b4db2d3010c3f458f85afd1a5",
+      "path": "assets/ClassDutySchedulePanel-DOfDHMtP.js",
+      "sha256": "208beed5be5f2cae17ddf7244ffc80efd1b912de55da2ed2447d6197d5266e43",
       "size": 45174
     },
     {
@@ -268,13 +268,13 @@
       "size": 2486
     },
     {
-      "path": "assets/ClassroomAdminWorkspace-DZKBEf-j.js",
-      "sha256": "3fcbf9ec2f711944a9408e993780da2e40db2d2e037d9972df31972ca28c8b7c",
+      "path": "assets/ClassroomAdminWorkspace--VC45xYi.js",
+      "sha256": "81ad35dcfd1483b7536a1e0ca57933fde8280ab2707a35c8b94b6266b9b4c5c8",
       "size": 25605
     },
     {
-      "path": "assets/ClassroomManagementWorkspace-WIRdhGy8.js",
-      "sha256": "b4b18bad9aea3b1110b72a239f3c86f353417eece395ee613afbaa65ab37794f",
+      "path": "assets/ClassroomManagementWorkspace-DD5KOBeK.js",
+      "sha256": "81b323822f570bd8c063137b51dd047d0508dcb4a1ebfffa50dad7d7be5ac57a",
       "size": 9851
     },
     {
@@ -283,8 +283,8 @@
       "size": 1382
     },
     {
-      "path": "assets/ClassroomToolsSheets-CMEOKqxt.js",
-      "sha256": "71517f5e1634d7336f72040dbea2a714fe58af4e7f0831f7f7fe79e8ed2c54da",
+      "path": "assets/ClassroomToolsSheets-DebcTVLX.js",
+      "sha256": "4ef5527c23d6860895d33e1df3987210cdab8203e8f831caf4558cc54129c7d8",
       "size": 8205
     },
     {
@@ -293,13 +293,13 @@
       "size": 903
     },
     {
-      "path": "assets/ClassRosterPurposeActions-DPVptE3L.js",
-      "sha256": "e6ea47edc15ade843c990417ff9228858a18aad7591caf504e3db89f383bd94b",
+      "path": "assets/ClassRosterPurposeActions-DTL4EdcW.js",
+      "sha256": "bfc71b32cdd2f421a69f03d507237627b9329f9c5ebe7ce0b6540cf40c59432a",
       "size": 1199
     },
     {
-      "path": "assets/CloudAccountPanel-CN33qhjn.js",
-      "sha256": "c67dc8bed406db86c0cd86ed4e011cfa73a3f9a4a8e6f468855e61dca0661c0e",
+      "path": "assets/CloudAccountPanel-B3jYoYrA.js",
+      "sha256": "f27249b841a3749bd651c599ca2b30336b673efb14cb85d057e0122c7dcaffae",
       "size": 26268
     },
     {
@@ -348,13 +348,13 @@
       "size": 18843
     },
     {
-      "path": "assets/day-exit-package-service-g9sn_rSw.js",
-      "sha256": "65b6e6a2764198a2d5c885ae0c5191f6221a1d54d273646154a9d617465c406b",
+      "path": "assets/day-exit-package-service-Bm4ETlQb.js",
+      "sha256": "7b44d905cdf186c4f267d3aac19640ec1856257bf933484a351a8314db28ed1d",
       "size": 8604
     },
     {
-      "path": "assets/DayExitPackagePanel-CcsIQufa.js",
-      "sha256": "6f6647b46add4597013dc03c4a1d385dd863886a2f7371650c87a6f9ac511a73",
+      "path": "assets/DayExitPackagePanel-Bc1La2Kh.js",
+      "sha256": "98a799aa4e2be66875c29e3aa545dfdd4994c634dc7642cd1bab56f816687434",
       "size": 14629
     },
     {
@@ -363,8 +363,8 @@
       "size": 2778
     },
     {
-      "path": "assets/DeskDocumentCenter-DlI1lurC.js",
-      "sha256": "b6b4753e1e27abb2044361c11e58c8636f79264ea601b4de1c62a99408e92f30",
+      "path": "assets/DeskDocumentCenter-BzMhkc87.js",
+      "sha256": "426e35f37e8d2f6b78b142eaa763e1604cd86e0b741b2f25239e5b826b923010",
       "size": 6957
     },
     {
@@ -388,18 +388,13 @@
       "size": 8269
     },
     {
-      "path": "assets/development-overview-BsySN2m3.js",
-      "sha256": "a689fd4faf259cffd2a249cc5b008dd89f1f9b7ba08cb659563f57c1b2f8120b",
+      "path": "assets/development-overview-mMBkWRD6.js",
+      "sha256": "ee4309f1264dde79bcaa29c169e43852b460280f92a79abba85bc1156421a2dd",
       "size": 4372
     },
     {
-      "path": "assets/development-report-DIMNDZ5R.js",
-      "sha256": "2dc81c65e5bb4c334714d49cf6e22360210de44ac3712cd4411afdc72bbe264d",
-      "size": 5533
-    },
-    {
-      "path": "assets/development-report-export-B0JJ8qbP.js",
-      "sha256": "3b81425a2033ca25543855c145f25fbed40c4129de442425c7e91bc50bc58e4e",
+      "path": "assets/development-report-export-DLfhFfxO.js",
+      "sha256": "756fc156beaf45f595f3851b2c47e0a0589dd94dc1305f8feaf56ab08274c259",
       "size": 5923
     },
     {
@@ -408,13 +403,18 @@
       "size": 5146
     },
     {
-      "path": "assets/development-report-sources-ZDbP9uzm.js",
-      "sha256": "caf7494cc0eeac8f299c7f63b9914a38a5397536daebc756ffd2e40fd558756b",
+      "path": "assets/development-report-sources-Dtj2PtUo.js",
+      "sha256": "f28e664c44fc9a6dc8e41301e7cfc2ae40b4e7c3395c946374013d7983b7ff32",
       "size": 6924
     },
     {
-      "path": "assets/DevelopmentObservationPicker-DCPSOSsP.js",
-      "sha256": "3685196f3ec0ed6c25960a53773a12c3630d9951581797c3a2f8eb71ede689c6",
+      "path": "assets/development-report-y3e2Vz7e.js",
+      "sha256": "e729398f6827909cae2441741aa71aa82e6c00d439ebf16177779e291e3d5698",
+      "size": 5533
+    },
+    {
+      "path": "assets/DevelopmentObservationPicker-Bdb4ftXv.js",
+      "sha256": "0232b5275ae6814a0820f2ceca9e4d86f53ef6d1cd08f398edf143f0036fd74e",
       "size": 4691
     },
     {
@@ -423,8 +423,8 @@
       "size": 4004
     },
     {
-      "path": "assets/DevelopmentPanels-Ci4Cn4_a.js",
-      "sha256": "16a91be78bc17f600a24b09a03838c2c613ff2a44744708f3abdfec7e5cb6de7",
+      "path": "assets/DevelopmentPanels-B-XD_GC1.js",
+      "sha256": "ed046b2be9624d6279ed952900b394faeff318b12364615a778e83ecf90bea6c",
       "size": 7064
     },
     {
@@ -433,8 +433,8 @@
       "size": 3884
     },
     {
-      "path": "assets/DevelopmentReportDialog-DhwM9zZi.js",
-      "sha256": "844f57d25a4787a34e15498fd645677b09a37e4382f4bcca5b383a5cf6fc31ea",
+      "path": "assets/DevelopmentReportDialog-DnVz0bp9.js",
+      "sha256": "d3feb391648889089cbc37f7c74baa2073b8a3999b83e735be7d1ce6cd55ba50",
       "size": 17817
     },
     {
@@ -458,8 +458,8 @@
       "size": 1375
     },
     {
-      "path": "assets/DocumentHistoryPanel-D3olYvMx.js",
-      "sha256": "7068d1c8ff022a9fe67c0f4988323ea061ce69091256c05f59296238504e0c9c",
+      "path": "assets/DocumentHistoryPanel-es3Ra4u3.js",
+      "sha256": "4c8c8d14803826f7a791e4e181e32488ab1fb428415495d9522bca90dfd4a9ca",
       "size": 2298
     },
     {
@@ -468,8 +468,8 @@
       "size": 595
     },
     {
-      "path": "assets/DocumentWorkshop-j80CmdbJ.js",
-      "sha256": "de59332d81bc81660d162860ab9f5c72cadf28421b674a10b4e815d9c2e55e57",
+      "path": "assets/DocumentWorkshop-DevZbBVt.js",
+      "sha256": "60dc0fe5a378c2d78afa38bd1041ae73ac6110488de56e9751613d5ca87f9f4f",
       "size": 8272
     },
     {
@@ -523,13 +523,13 @@
       "size": 2737
     },
     {
-      "path": "assets/FamilyEngagementWorkspace-DgIeDGl-.js",
-      "sha256": "cd6479363243ae53731fb22139530b76eab3f37060c2939a97d0c92db69b57ea",
+      "path": "assets/FamilyEngagementWorkspace-CXlxOdLe.js",
+      "sha256": "0fd96c5f042fa7c7e64be40970d7bc02646fe6df3eb312a14b281e467c51a066",
       "size": 29158
     },
     {
-      "path": "assets/FamilyMeetingFormPanel-BEQYJY0w.js",
-      "sha256": "63c2252c78a63259d96c1376c298c8a19f825c408b3dbb9e3b5d842b5058fa95",
+      "path": "assets/FamilyMeetingFormPanel-CP8958vC.js",
+      "sha256": "67bb3bcaca0fcc9e40f5cd6e1ca9b0700ff87c8476c301e396292a0712d16574",
       "size": 30418
     },
     {
@@ -543,8 +543,8 @@
       "size": 698
     },
     {
-      "path": "assets/FamilyResponseBoardPanel-DR9GN-fP.js",
-      "sha256": "d0ef88c61be6f729d5b48a8423e67c2830338c284aaf6818c2facd9c33a97383",
+      "path": "assets/FamilyResponseBoardPanel-DcAcBzAA.js",
+      "sha256": "6c05dff83268e7188a13d826c56595b1a0168ecba113eb0879a0ae1208f0c5bd",
       "size": 15639
     },
     {
@@ -568,9 +568,9 @@
       "size": 4605
     },
     {
-      "path": "assets/FounderPremiumActivationPanel-BkUHWqp4.js",
-      "sha256": "b3887a5489a65311e4ee8e18bd6649a4eddbcfde1b25f854783a9652d0e8f740",
-      "size": 6143
+      "path": "assets/FounderPremiumActivationPanel-elrHLcKN.js",
+      "sha256": "f839f5a9a9c37a8674e4bfc9b8533914159f0ea01cfc1dc562dbba6b8e69bb78",
+      "size": 6171
     },
     {
       "path": "assets/google-g-logo.png",
@@ -643,9 +643,9 @@
       "size": 6396
     },
     {
-      "path": "assets/index-BCYWTUMg.js",
-      "sha256": "cd3ac56a934236ef9fe3d3d1b554623d5754726c092b5fd1ff9dd7469d1cbe7b",
-      "size": 1274920
+      "path": "assets/index-BqxvSscm.js",
+      "sha256": "3c44575853680bb717075817155b9f612fc9068ea6b0315f59c4963008b7158b",
+      "size": 1274909
     },
     {
       "path": "assets/index-BTzESCst.css",
@@ -653,14 +653,14 @@
       "size": 328534
     },
     {
-      "path": "assets/InviteAccessScreen-CvzW7yUD.js",
-      "sha256": "c00b34f03f3eb30acb6c85d5525da329e7ebaba5fd6c5b46a5210de7a07e4933",
-      "size": 2950
-    },
-    {
       "path": "assets/InviteAccessScreen-DcTW_cUU.css",
       "sha256": "e1c6359593a0088792fd5e6cf6d82b8a2b1e80f555e5065ba190883a423d47d3",
       "size": 3197
+    },
+    {
+      "path": "assets/InviteAccessScreen-DX_s23-5.js",
+      "sha256": "4fe486b87f6b4d771ba166708d8c6ce6b57f613cad6cb921db9b05cb05ce1860",
+      "size": 2950
     },
     {
       "path": "assets/iphone/Bezel.png",
@@ -683,8 +683,8 @@
       "size": 627
     },
     {
-      "path": "assets/LearningCenterWorkspace-DuQTX7bg.js",
-      "sha256": "831a0dca7a67e70e23bf26d8d94773746e4b8d05e4ebb3264ed5e34ad1bb5307",
+      "path": "assets/LearningCenterWorkspace-akKMw_q4.js",
+      "sha256": "917575d6f89b5021df2cc3d05d49d8cd16ad68397fc71bcbffdddc32c102cdc8",
       "size": 14982
     },
     {
@@ -723,8 +723,8 @@
       "size": 30564
     },
     {
-      "path": "assets/MaterialBoxLabelsPanel-Cp-ELRq0.js",
-      "sha256": "881ec25d450fcdf109092bf0ee2459ca31aaf423afc0d4a20494cb4e4d8edd0b",
+      "path": "assets/MaterialBoxLabelsPanel-CXpfaVlH.js",
+      "sha256": "2370f7de0bc5ef1b21d4a282748333bb438fec198f0e19d1d0309608b082b0bf",
       "size": 20793
     },
     {
@@ -743,13 +743,13 @@
       "size": 420
     },
     {
-      "path": "assets/month-end-package-Q5dB7dOs.js",
-      "sha256": "2936e27c6866c079063ff39a46d244dcd3d114b176b9ce69283aec525186dfd2",
+      "path": "assets/month-end-package-DPTucURa.js",
+      "sha256": "922b814189639d04bc4227c53ff998d072e89df7bc7726ecc92e1629bedba593",
       "size": 7542
     },
     {
-      "path": "assets/MonthEndPackagePanel-aeQ-DSmL.js",
-      "sha256": "0bb825fc96f2d22222232cded9ada56a99b3fb54b558b92115a2c611c7ca5fcf",
+      "path": "assets/MonthEndPackagePanel-Bg1HLH2t.js",
+      "sha256": "1feaacd428f0fc9567f7968150a706b4dfa7c53be8f9852b78b796bbc5ad716a",
       "size": 2920
     },
     {
@@ -778,9 +778,9 @@
       "size": 84472
     },
     {
-      "path": "assets/OfficialFormsWorkspace-D5xdVXQ-.js",
-      "sha256": "3e3d5a177be022d98b5cdf08d13795cb545424e268e41203d1ed53b39f10a53b",
-      "size": 416455
+      "path": "assets/OfficialFormsWorkspace-GyGAdgO5.js",
+      "sha256": "99ddd307ae384da323d07e555498e2aaa91a4841dd020490c39de15be81370ad",
+      "size": 416632
     },
     {
       "path": "assets/open-html-print-window-DhSgWVOW.js",
@@ -788,8 +788,8 @@
       "size": 1800
     },
     {
-      "path": "assets/ParentSurnameSuggestion-DtEnk0O7.js",
-      "sha256": "c316d443f763e65a98f646e0fcfc291ec947bd5543ced1bfee088f98c60cd9fe",
+      "path": "assets/ParentSurnameSuggestion-BWiT4Shv.js",
+      "sha256": "0ebf6c44a060fcedeba3aff1633cc79fb03f138756412c58906bdfd69298edac",
       "size": 1083
     },
     {
@@ -818,13 +818,13 @@
       "size": 9655
     },
     {
-      "path": "assets/pedagogical-orchestrator-BVCHyMS7.js",
-      "sha256": "3f44ca927b0c3db736db96406d6ff71ee469bb06e26bb2c6ed6d7649e039d1dd",
+      "path": "assets/pedagogical-orchestrator-d8xbiDel.js",
+      "sha256": "0a5d60782fd938996c6bc98721a98845b7d1a7d191318dc77d90428e60d636f8",
       "size": 19457
     },
     {
-      "path": "assets/pedagogical-plan-bridge-0oMAuVEp.js",
-      "sha256": "7ffeb6c52d453d9ef3ef714ec398d2230723dcc642ba5db49eb82440fab01621",
+      "path": "assets/pedagogical-plan-bridge-C76lJ7uK.js",
+      "sha256": "f7fdec80d7b82dfb145a1122f86f0f2d78e1a8c26dd0a206749cc9f0d10d3b96",
       "size": 1555
     },
     {
@@ -833,8 +833,8 @@
       "size": 1698
     },
     {
-      "path": "assets/plan-next-steps-BoUq2GEz.js",
-      "sha256": "7d98f995351da8918f97ba2c44c2850e97f7ed883e108322f978194ecb3e931f",
+      "path": "assets/plan-next-steps-gnxxECLQ.js",
+      "sha256": "1c3364ff39359e736de9d609d1ac8b00392cfe3ca6944ea294f92d3a84bada94",
       "size": 18388
     },
     {
@@ -848,14 +848,14 @@
       "size": 40666
     },
     {
+      "path": "assets/PlanNextSteps-64WeporQ.js",
+      "sha256": "2cfe5ab48f9d69bedf8779e452b5becf987357d771adde7d22263e167a5ef571",
+      "size": 4161
+    },
+    {
       "path": "assets/PlanNextSteps-BIIwq4E3.css",
       "sha256": "6043114c9fee2d5d220b1ba24ccf6c4da751406236cf093c464d49ee4b9e2770",
       "size": 1817
-    },
-    {
-      "path": "assets/PlanNextSteps-DO3kkQc3.js",
-      "sha256": "6d4a5b117a4596c72d2ec7dabf4c54f439b0337fa982eff0ea9021030b418f9d",
-      "size": 4161
     },
     {
       "path": "assets/planning-calendar-pdf-Dvw0vDzh.js",
@@ -878,18 +878,18 @@
       "size": 79474
     },
     {
-      "path": "assets/PreparedTeacherActions-Cqk0FSbI.js",
-      "sha256": "783a01366e732ee7c42efa5f84dc82aac4e68a04b12dbeea46f8bbe046178ebd",
-      "size": 18491
-    },
-    {
       "path": "assets/PreparedTeacherActions-DnWTaKb1.css",
       "sha256": "768d15cd7e048a013108171cd197ef5c676980b68cf560aa6fbb41609a682f3b",
       "size": 1583
     },
     {
-      "path": "assets/print-kit-model-Cr5PPNHD.js",
-      "sha256": "21c74cf0565796dc0bf988c79049163b2ad01a1af10b902f56ea2c7ccec4d990",
+      "path": "assets/PreparedTeacherActions-esBKeaH3.js",
+      "sha256": "2c699dbe0cbd5239de878214fa0b56bd48fda6b4f63b77568e69b7fdb2cec8d7",
+      "size": 18491
+    },
+    {
+      "path": "assets/print-kit-model-DCkcXZHt.js",
+      "sha256": "67297e89ce7d34ea79720a011501cf327818c4703045b7afe69f7ab9544fb5e3",
       "size": 2959
     },
     {
@@ -918,8 +918,8 @@
       "size": 189644
     },
     {
-      "path": "assets/recovery-snapshot-Cj4uJa4X.js",
-      "sha256": "ec77eb79f1feeb178cda84ca3a1a0470ce94e29a0c4b06b1933b5db13cd8c46f",
+      "path": "assets/recovery-snapshot--uVITRDE.js",
+      "sha256": "befe5c4509d4dbde8918d0d5260bdaf9550798f58964bbe1f5ec53073baaee06",
       "size": 2462
     },
     {
@@ -998,8 +998,8 @@
       "size": 879
     },
     {
-      "path": "assets/schema-CU4CkJGk.js",
-      "sha256": "7a2286f38a98e4207a83b670a95898c67db3cba76bd61ec7b6f86d9bebaee597",
+      "path": "assets/schema-BxogQz8x.js",
+      "sha256": "8122f7675076a5c98fd25164205e5580ef12b40c72d3e077829ba261d9d85fb1",
       "size": 101764
     },
     {
@@ -1023,8 +1023,8 @@
       "size": 1636
     },
     {
-      "path": "assets/SchoolDocumentTemplateWorkspace-DJfeIaTi.js",
-      "sha256": "678d644a329af05e26ebe06692b8e2d7f5d72dbdf3adf68886eef603eb960357",
+      "path": "assets/SchoolDocumentTemplateWorkspace-DHOpFJKq.js",
+      "sha256": "b8d933efeef503d173173c5776eaa3a022a8fbad68b5c707e3b44b34b8dd4141",
       "size": 8971
     },
     {
@@ -1048,13 +1048,13 @@
       "size": 29627
     },
     {
-      "path": "assets/SimpleClassroomScreen-mm-wvruS.js",
-      "sha256": "c7a51d0e6827ad516a2305dd4ecfb7a39528c22ab115b4af0093f4f75010d7dc",
+      "path": "assets/SimpleClassroomScreen-COj4idmW.js",
+      "sha256": "9847db23efa7a83e4c3bf10fee788bf274cd33e19a716456656ef7cc55f5e1d9",
       "size": 10066
     },
     {
-      "path": "assets/SimpleDocumentWorkspaceScreen-BOnte4-C.js",
-      "sha256": "75445e24e84dee641b7860b3020c086e969ceb5511255a37177c6ae92aa1f8b8",
+      "path": "assets/SimpleDocumentWorkspaceScreen-Cvb9FO1K.js",
+      "sha256": "211e5cf2c3404c83ee8b325529ba5233ab5aa0bed7de59da45881005a3b8d431",
       "size": 10075
     },
     {
@@ -1078,13 +1078,13 @@
       "size": 31011
     },
     {
-      "path": "assets/SimplePlanWorkspaceScreen-p_Ea9OB5.js",
-      "sha256": "1413be9f3c398b7cdb7c2609820cf12229747b86867dd743cc12f74956800ed6",
+      "path": "assets/SimplePlanWorkspaceScreen-C4mUiCXy.js",
+      "sha256": "1441ecc0352855b70f7bb0b84ef40af3996fb61b3162e445db27049c57ecf62e",
       "size": 141911
     },
     {
-      "path": "assets/SimpleTodayScreen-Bu0_B9g9.js",
-      "sha256": "cd46eea0a35802ddaad6b7c0a4f87881801130a30df1b69077916b4bacfa82ff",
+      "path": "assets/SimpleTodayScreen-Ccq0zNtp.js",
+      "sha256": "c1c20cab78101cce72679340d4754595508645b5d3b480bb55c0955fa244a7bd",
       "size": 69420
     },
     {
@@ -1093,13 +1093,13 @@
       "size": 40494
     },
     {
-      "path": "assets/small-group-card-service-is9Su1M4.js",
-      "sha256": "7444930571a75da2222f528afc089209023c5e6d14bf2dd8738c97d497d11af6",
+      "path": "assets/small-group-card-service-CLQoyffT.js",
+      "sha256": "ec75e84f649924736c52d5826bcc27c5bbe281b8d1bebfeb81d9e8e96281ffea",
       "size": 11549
     },
     {
-      "path": "assets/SmallGroupCardsPanel-CIO8FNRM.js",
-      "sha256": "45c4f08552c5a9d5405bfe9ad805d1e4eabd0aee66e031a4a64f6237f538235a",
+      "path": "assets/SmallGroupCardsPanel-DpCTqui9.js",
+      "sha256": "3eb5bcf9cdb439281a084ca1a9233e17028e61ffbbaef7637d4cc576d26c2213",
       "size": 13217
     },
     {
@@ -1123,13 +1123,13 @@
       "size": 14324
     },
     {
-      "path": "assets/student-dossier-BS7c6u-b.js",
-      "sha256": "88bc54fd556d8cb4794b3093bdb2b799c8262393c027a186ce1aa9a631908af1",
+      "path": "assets/student-dossier-DIVxvo1k.js",
+      "sha256": "17ea803cae0f1e7d16b930ccd08c59944fdd74bb93411087428b69caa39bf066",
       "size": 32958
     },
     {
-      "path": "assets/student-import-service-C8PveCx1.js",
-      "sha256": "e9bcd5dceab08f3026bdd882ea953d2722a652273acdfecb4c03b4ad83ea084e",
+      "path": "assets/student-import-service-_iaFtVb3.js",
+      "sha256": "405783a0aabd81e4181a62dfe20f9a0fa1841ceda70b7ed26c09527dd3fc4730",
       "size": 2434
     },
     {
@@ -1158,14 +1158,14 @@
       "size": 2562
     },
     {
-      "path": "assets/StudentImportSheet-5Kyn9V1j.js",
-      "sha256": "f48511766cd76a61379e28a2655d43e02ffff1a33aede62f78d94356375dc2aa",
-      "size": 8756
-    },
-    {
       "path": "assets/StudentImportSheet-Bs-7bECV.css",
       "sha256": "26474dcf566708b1159a9fcc6ea8491444c9a0cca706a0ba02d244182ba0afc9",
       "size": 3198
+    },
+    {
+      "path": "assets/StudentImportSheet-QNKKfWKL.js",
+      "sha256": "4f9ebb169d9a589a6eaafa03b51198372800f09ce9e59756e5877adc7e80f2ca",
+      "size": 8756
     },
     {
       "path": "assets/StudentProfileOverviewPanels-BkA5peu8.js",
@@ -1173,13 +1173,13 @@
       "size": 3432
     },
     {
-      "path": "assets/StudentProfileSafetyPanels-B7Cqr4Sb.js",
-      "sha256": "b8daab62dcc47552314470075123f53116579dab33e29c12dfc98fbca8dcc8eb",
+      "path": "assets/StudentProfileSafetyPanels-CajjVWhd.js",
+      "sha256": "16d67c97848b25e63f1e0841d87e6c75bd56d829783195745ee444ae8865000b",
       "size": 12386
     },
     {
-      "path": "assets/teacher-assessment-completion-DJBA9AAB.js",
-      "sha256": "c9977300887049b3e3f70c0cccfaf3d5beb9a5a111907dfd08a0411672a09f3f",
+      "path": "assets/teacher-assessment-completion-CVrrWZUH.js",
+      "sha256": "966de14b617a84389560cd001a4fca2160c9a0808f2bd7cb376197eeb795ab69",
       "size": 1632
     },
     {
@@ -1213,8 +1213,8 @@
       "size": 9114
     },
     {
-      "path": "assets/teacher-owned-monthly-evaluation-export-Cy1VtdkJ.js",
-      "sha256": "83a5755e4da1c2f71f43e6bac3f8745b77b3b03a8de472e2f0ed7dfc048c4419",
+      "path": "assets/teacher-owned-monthly-evaluation-export-C1vDlWsw.js",
+      "sha256": "a0e1c994683aa773ea41563a827db98d161ac3d75d5c83fe562ea91be5689277",
       "size": 12351
     },
     {
@@ -1223,23 +1223,23 @@
       "size": 22525
     },
     {
-      "path": "assets/teacher-owned-plan-service-CHFUqw5O.js",
-      "sha256": "9a6ff2a0f82154ace9ba0b8f2200c494ee7cf6f598f56c4375e1116e9d521708",
+      "path": "assets/teacher-owned-plan-service-CtVdOghW.js",
+      "sha256": "6bd6ca6c238d735d08fe156f6b1f2544f50eb71d3d46951875d8066f6e69aa97",
       "size": 50718
     },
     {
-      "path": "assets/teacher-report-document-BnRMuybo.js",
-      "sha256": "3f32817751e2278dfc67e3abc98c60c5a3169a1e76be52563bcece73e38e311b",
+      "path": "assets/teacher-report-document-BTuLj4YK.js",
+      "sha256": "e490675088a5d5de4454f76e500659b13818acc958f61bb21a7c32bb08b8b6d5",
       "size": 9477
     },
     {
-      "path": "assets/teacher-report-model-ARHU0CrP.js",
-      "sha256": "5ff33f3cc08163ec2d4ade8f3be30128df5ee54cd2b51b7db2b3a81a149bdebe",
+      "path": "assets/teacher-report-model-B5bFMonq.js",
+      "sha256": "3c161544a57fcb44ce2472d9cc26f1d949497de5b17db7615df96a7443a0f471",
       "size": 7516
     },
     {
-      "path": "assets/teacher-report-spreadsheet-DeOTiUeT.js",
-      "sha256": "d3054008728549454198a6136c5340b7a71b820f099e5bcdabe7c6a35b1a1775",
+      "path": "assets/teacher-report-spreadsheet-ioD4dwav.js",
+      "sha256": "272b6f2198df771f52bd4cf5e33caa7fe2cdc96d0abbb242cd34f52a5a126629",
       "size": 8703
     },
     {
@@ -1253,8 +1253,8 @@
       "size": 38
     },
     {
-      "path": "assets/teacher-week-workspace-Dk2NE1JE.js",
-      "sha256": "c34181e2c5f9ccbb82a7c809839e8db20582f3b83aba4eb421a2ed7fb3fdfff3",
+      "path": "assets/teacher-week-workspace-BawTwl5p.js",
+      "sha256": "c4dc28d60a1b2ef874ffc4deac92707b384841cc9a2589436772dcc26bccf4d8",
       "size": 6014
     },
     {
@@ -1263,14 +1263,19 @@
       "size": 1980
     },
     {
+      "path": "assets/TeacherFollowupWorkspace--exrWiGc.js",
+      "sha256": "b88213677a712b6c4cd6268de7a1f57397455ef5900e2119cd734c18a19f5dde",
+      "size": 39096
+    },
+    {
       "path": "assets/TeacherFollowupWorkspace-Cngo9Ons.css",
       "sha256": "62a6cc902a19977767127e96b5adc3742d4e4e4d8a5eb72c6faf7f51cc6ff5a7",
       "size": 3805
     },
     {
-      "path": "assets/TeacherFollowupWorkspace-nbIAhmUt.js",
-      "sha256": "3ce855c6e00724e86e759c203c1f9d9edd3e03a52e6300b5b35a7142fc17a3f5",
-      "size": 39096
+      "path": "assets/TeacherOwnedPlanScreen--5xFTWe7.js",
+      "sha256": "ea2fab7775bd41685409ddaa08005b6c80f3854ebc2c1a7653210dbdffb37eec",
+      "size": 55337
     },
     {
       "path": "assets/TeacherOwnedPlanScreen-BLrrE3vN.css",
@@ -1278,19 +1283,19 @@
       "size": 16109
     },
     {
-      "path": "assets/TeacherOwnedPlanScreen-CvlPpZYF.js",
-      "sha256": "22aa69767a545b10850fbcdc60b391722210af4446ec00a75cd35fd0d10927bc",
-      "size": 55337
-    },
-    {
       "path": "assets/TeacherPrintKit-B8N_Yc7m.css",
       "sha256": "44eecc1409b14bbeeeff9ed2f6aa86f55a2510c9c4e1b5a962f380002d595029",
       "size": 1178
     },
     {
-      "path": "assets/TeacherPrintKit-XD7QNppU.js",
-      "sha256": "4e11bb74155452f687e9d25953b0860e88e5991c8d6f36a3cb0d40a8f8beee4d",
+      "path": "assets/TeacherPrintKit-CgA8Dx06.js",
+      "sha256": "f567bd3744914cb7f588cb9320ae51dffb0c6901da184947e6018cff3c65e853",
       "size": 10665
+    },
+    {
+      "path": "assets/TeacherReportCenterPanel-CBeSXlZD.js",
+      "sha256": "20cbea4a83841fc3e9fd06474b254f881e65142cf3f37e5ed0f06b50d97b6b42",
+      "size": 18394
     },
     {
       "path": "assets/TeacherReportCenterPanel-DeycOGyx.css",
@@ -1298,24 +1303,19 @@
       "size": 1301
     },
     {
-      "path": "assets/TeacherReportCenterPanel-UhQ_cSmh.js",
-      "sha256": "fa9206bb83328234fb024ee5bb1a02a28567edfc745f159a2e8ea44b3814ab3a",
-      "size": 18394
-    },
-    {
       "path": "assets/teaching/teacher-workshop.webp",
       "sha256": "746bf133401ef6667b7fc8a05aa7620101ef2e6bee98f09c0841d2545b0986ce",
       "size": 57034
     },
     {
-      "path": "assets/TomorrowReadyCard-BsCopzq3.js",
-      "sha256": "002f2bbdd4909fd85de13089c4028b043193386885e7e1ecddbb2899f1196877",
-      "size": 9781
-    },
-    {
       "path": "assets/TomorrowReadyCard-Ct-QcBN9.css",
       "sha256": "061232a6b26f273fe167819f4f5c3c3d5f08c16ca514822e39b9f80a0ffcf6c4",
       "size": 2471
+    },
+    {
+      "path": "assets/TomorrowReadyCard-H8yEJ-Av.js",
+      "sha256": "f7088eab0ebd8342806f49fda186bf24bbbe36f71812f40b2c15b301d5d97df8",
+      "size": 9781
     },
     {
       "path": "assets/tymm-2024-catalog-B3vlHmmn.js",
@@ -1338,8 +1338,8 @@
       "size": 3030
     },
     {
-      "path": "assets/WorkPackageCenter-DaVY3nr5.js",
-      "sha256": "787e6956785bd87a5963387bfe949256fc407ab4e1187239942a68591c4bd841",
+      "path": "assets/WorkPackageCenter-Dk6bwKt-.js",
+      "sha256": "91006072e916ba8c3af71a8cb65e4e8b7f657b55a53a8ca72fcd96d2b4119f99",
       "size": 22911
     },
     {
