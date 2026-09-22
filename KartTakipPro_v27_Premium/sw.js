@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kart-takip-pro-v13';
+const CACHE_NAME = 'kart-takip-pro-v14';
 const ASSETS = [
   './',
   './index.html',
@@ -7,22 +7,23 @@ const ASSETS = [
   './manifest.json',
   './icon.png',
   'https://cdn.tailwindcss.com',
-  'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css',
   'https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'
 ];
 
 self.addEventListener('install', (e) => {
+  self.skipWaiting();
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
-    })
-  );
-});
-
-self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request).then((res) => {
-      return res || fetch(e.request);
+    caches.open(CACHE_NAME).then(async (cache) => {
+      for (const url of ASSETS) {
+        try {
+          const res = await fetch(url);
+          if (res && (res.ok || res.type === 'opaque')) {
+            await cache.put(url, res);
+          }
+        } catch (err) {
+          console.warn('Cache asset skipped:', url, err);
+        }
+      }
     })
   );
 });
@@ -37,6 +38,14 @@ self.addEventListener('activate', (e) => {
           }
         })
       );
+    }).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', (e) => {
+  e.respondWith(
+    caches.match(e.request).then((res) => {
+      return res || fetch(e.request);
     })
   );
 });
