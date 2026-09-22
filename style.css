@@ -1,0 +1,383 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap');
+
+:root {
+    --primary: #DA291C;
+    --primary-light: rgba(218, 41, 28, 0.1);
+    --bg-main: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #94a3b8;
+    --card-bg: white;
+    --card-border: rgba(0, 0, 0, 0.05);
+    --nav-bg: rgba(255, 255, 255, 0.9);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-main: #0f172a;
+        --text-main: #f1f5f9;
+        --text-muted: #64748b;
+        --card-bg: #1e293b;
+        --card-border: rgba(255, 255, 255, 0.05);
+        --nav-bg: rgba(15, 23, 42, 0.9);
+    }
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+.ak-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ak-card:active {
+    transform: scale(0.97);
+}
+
+.ak-btn-primary {
+    background: var(--primary);
+    color: white;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.ak-btn-primary:active {
+    transform: scale(0.95);
+    opacity: 0.9;
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-top: 1px solid var(--card-border);
+    z-index: 1000;
+    padding-bottom: env(safe-area-inset-bottom, 12px);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 10px;
+    font-weight: 800;
+    transition: all 0.3s;
+    width: 80px;
+}
+
+.nav-item.active {
+    color: var(--primary);
+    transform: translateY(-4px);
+}
+
+.nav-icon {
+    font-size: 22px;
+    transition: transform 0.2s;
+}
+
+.nav-item.active .nav-icon {
+    transform: scale(1.2);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    padding-bottom: 120px;
+    animation: slideUp 0.4s ease-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slideDown {
+    animation: slideDown 0.3s ease-out;
+}
+
+.animate-slideUp {
+    animation: slideUp 0.3s ease-out;
+}
+
+/* PIN SCREEN */
+#pinScreen {
+    position: fixed;
+    inset: 0;
+    background: var(--primary);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 40px;
+    transition: opacity 0.3s;
+}
+
+.pin-dot {
+    width: 14px;
+    height: 14px;
+    border: 2.5px solid white;
+    border-radius: 50%;
+    transition: all 0.25s;
+}
+
+.pin-dot.filled {
+    background: white;
+    transform: scale(1.3);
+}
+
+.numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+}
+
+.num-btn {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 700;
+    transition: background 0.2s;
+}
+
+.num-btn:active {
+    background: white;
+    color: var(--primary);
+    transform: scale(0.9);
+}
+
+/* HEADER */
+header {
+    background: var(--primary);
+    color: white;
+    padding: 24px;
+    padding-top: 32px;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+}
+
+/* Dashboard */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: -40px;
+}
+
+.summary-card {
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-card.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+input,
+select {
+    border-radius: 12px !important;
+    border: 1px solid var(--card-border);
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    font-family: inherit;
+    outline: none;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+#detailPanel {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+/* Toggle Group Styles (Dennis Style) */
+.group.active {
+    background: var(--primary-light) !important;
+    border: 1.5px solid var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(218, 41, 28, 0.1);
+}
+
+.group .indicator {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.group.active .indicator {
+    transform: scale(1.5);
+    filter: drop-shadow(0 0 5px rgba(218, 41, 28, 0.3));
+}
+
+/* Custom Scrollbar */
+.custom-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+    background: var(--text-muted);
+    border-radius: 10px;
+}
+
+/* FullCalendar Premium Overrides (Dennis Style) */
+#calendar {
+    font-size: 11px;
+    border-radius: 24px;
+    overflow: hidden;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    padding: 8px;
+}
+
+.fc .fc-toolbar {
+    margin-bottom: 16px !important;
+    padding: 4px;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 15px !important;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-main);
+}
+
+.fc .fc-button {
+    padding: 6px 12px !important;
+    font-size: 10px !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: var(--primary) !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: white !important;
+    box-shadow: 0 4px 10px rgba(218, 41, 28, 0.2);
+}
+
+.fc .fc-button:active {
+    transform: scale(0.9);
+}
+
+.fc .fc-button-primary:disabled {
+    opacity: 0.4;
+}
+
+.fc-theme-standard td,
+.fc-theme-standard th {
+    border-color: var(--card-border) !important;
+}
+
+.fc .fc-daygrid-day-number {
+    font-weight: 800;
+    opacity: 0.6;
+    color: var(--text-main);
+    padding: 4px 8px !important;
+}
+
+.fc .fc-col-header-cell-cushion {
+    font-size: 9px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 8px 0 !important;
+}
+
+.fc .fc-daygrid-event {
+    border-radius: 6px !important;
+    padding: 2px 6px !important;
+    font-size: 8px !important;
+    font-weight: 700;
+    border: none !important;
+    margin: 1px 2px !important;
+}
+
+.fc .fc-day-today {
+    background: var(--primary-light) !important;
+}
+
+.fc .fc-scrollgrid {
+    border: none !important;
+}
+
+.fc .fc-daygrid-day-frame {
+    min-height: 50px !important;
+}
