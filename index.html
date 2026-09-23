@@ -1,570 +1,189 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Kart Takip Pro</title>
-    <link rel="icon" type="image/png" href="./icon.png">
-    <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#DA291C">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-</head>
-
-<body class="select-none">
-
-    <!-- SHIFRE EKRANI (PIN) -->
-    <div id="pinScreen">
-        <div class="mb-8 text-center">
-            <h1 class="text-3xl font-bold mb-2">Kart Takip Pro</h1>
-            <p id="pinStatus" class="opacity-70 text-sm font-medium">Güvenli giriş için şifreyi girin</p>
-        </div>
-
-        <div class="flex gap-6 mb-4" id="pinDisplay">
-            <div class="pin-dot"></div>
-            <div class="pin-dot"></div>
-            <div class="pin-dot"></div>
-            <div class="pin-dot"></div>
-        </div>
-
-        <div class="numpad">
-            <button class="num-btn" onclick="pressNum(1)">1</button>
-            <button class="num-btn" onclick="pressNum(2)">2</button>
-            <button class="num-btn" onclick="pressNum(3)">3</button>
-            <button class="num-btn" onclick="pressNum(4)">4</button>
-            <button class="num-btn" onclick="pressNum(5)">5</button>
-            <button class="num-btn" onclick="pressNum(6)">6</button>
-            <button class="num-btn" onclick="pressNum(7)">7</button>
-            <button class="num-btn" onclick="pressNum(8)">8</button>
-            <button class="num-btn" onclick="pressNum(9)">9</button>
-            <button class="num-btn" style="background:transparent" onclick="clearPin()">C</button>
-            <button class="num-btn" onclick="pressNum(0)">0</button>
-            <button class="num-btn" style="background:transparent" onclick="delPin()">⌫</button>
-        </div>
-    </div>
-
-    <!-- ANA HEADER -->
-    <header class="shadow-xl">
-        <div class="flex justify-between items-center mb-8">
-            <div>
-                <h1 id="headerTitle" class="text-2xl font-bold">KKTPRO 2.0</h1>
-                <div class="flex items-center gap-2">
-                    <p class="text-[10px] opacity-70 font-bold uppercase tracking-widest mt-0.5">Finansal Durumunuz</p>
-                    <div id="syncIndicator" class="hidden text-[10px] font-bold text-gray-500 flex items-center gap-1">
-                        <span id="syncIcon">☁️</span> <span id="syncText">SYNC</span>
-                    </div>
-                </div>
-            </div>
-            <div class="flex items-center gap-3">
-                <button onclick="logoutApp()"
-                    class="w-12 h-12 bg-gray-100 dark:bg-slate-700 rounded-full flex items-center justify-center font-bold text-[10px] hover:bg-gray-200 transition-colors uppercase">🔐</button>
-                <button onclick="switchTab('borc', this)"
-                    class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center font-bold text-[10px] hover:bg-white/40 transition-colors uppercase">BORÇ</button>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- TAB 1: ÖZET -->
-        <div id="tab-ozet" class="tab-content active px-4">
-            <div class="summary-grid mb-6">
-                <div id="card-limit" onclick="showDetail('limit', this)" class="ak-card summary-card active">
-                    <p class="text-[9px] font-bold text-gray-400 uppercase leading-none mb-1 text-center">Toplam Limit
-                    </p>
-                    <h3 id="totalLimit" class="text-sm font-bold text-gray-800 dark:text-gray-100 text-center">0,00 TL
-                    </h3>
-                </div>
-                <div id="card-usable" onclick="showDetail('usable', this)" class="ak-card summary-card">
-                    <p class="text-[9px] font-bold text-green-500 uppercase leading-none mb-1 text-center">
-                        Kullanılabilir Limit</p>
-                    <h3 id="totalUsable" class="text-sm font-bold text-green-600 text-center">0,00 TL</h3>
-                </div>
-                <div id="card-debt" onclick="showDetail('debt', this)"
-                    class="ak-card summary-card border-l-4 border-[#DA291C]">
-                    <p class="text-[9px] font-bold text-[#DA291C] uppercase leading-none mb-1 text-center">TOPLAM BORÇ
-                    </p>
-                    <h3 id="totalDebt" class="text-sm font-bold text-[#DA291C] text-center">0,00 TL</h3>
-                </div>
-                <div id="card-upcoming" onclick="showDetail('upcoming', this)"
-                    class="ak-card summary-card bg-indigo-600 text-white border-none shadow-indigo-100 dark:shadow-none">
-                    <p id="upcomingLabel"
-                        class="text-[9px] font-bold text-indigo-100 uppercase leading-none mb-1 text-center tracking-tighter">
-                        ÖDEME YOK</p>
-                    <h3 id="upcomingAmount" class="text-sm font-bold text-white text-center uppercase">0,00 TL</h3>
-                </div>
-            </div>
-
-            <!-- DETAY PANELİ -->
-            <div id="detailPanel" class="ak-card p-0 mb-6 overflow-hidden">
-                <div onclick="toggleSection('detailListBody', this)"
-                    class="flex justify-between items-center p-5 cursor-pointer bg-gray-50/50 dark:bg-gray-800/20 active:bg-gray-100 transition-colors">
-                    <h4 id="detailTitle" class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">BORÇ
-                        DETAYLARI</h4>
-                    <span class="toggle-icon text-gray-300 text-xs">▼</span>
-                </div>
-                <div id="detailListBody" class="p-5 pt-0 border-t dark:border-gray-800">
-                    <div id="detailList" class="space-y-3 max-h-[300px] overflow-y-auto pr-2 custom-scroll mt-4"></div>
-                </div>
-            </div>
-
-            <!-- SON ÖDEME LİSTESİ -->
-            <section class="mb-6">
-                <div onclick="toggleSection('dueListBody', this)"
-                    class="flex justify-between items-center px-1 mb-3 cursor-pointer group">
-                    <h3 class="text-xs font-bold text-gray-400 uppercase group-active:text-gray-600">Son Ödeme Tarihi
-                        Yaklaşanlar</h3>
-                    <span class="toggle-icon text-gray-300 text-xs">▼</span>
-                </div>
-                <div id="dueListBody" class="space-y-3"></div>
-            </section>
-
-            <!-- HESAP KESİM LİSTESİ -->
-            <section class="mb-8">
-                <div onclick="toggleSection('cutoffListBody', this)"
-                    class="flex justify-between items-center px-1 mb-3 cursor-pointer group">
-                    <h3 class="text-xs font-bold text-gray-500 uppercase group-active:text-gray-700">Hesap Kesim Tarihi
-                        Yaklaşanlar</h3>
-                    <span class="toggle-icon text-gray-300 text-xs">▼</span>
-                </div>
-                <div id="cutoffListBody" class="space-y-3"></div>
-            </section>
-        </div>
-
-        <!-- TAB: TAKVİM (CALENDAR) -->
-        <div id="tab-takvim" class="tab-content px-4">
-            <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-6 px-1">Ödeme Takvimi</h2>
-            <div id="calendar" class="ak-card p-4 bg-white dark:bg-slate-800 border-none shadow-xl min-h-[400px]"></div>
-            <div id="dayDetailPanel" class="hidden mt-6 ak-card p-5 animate-slideUp">
-                <h3 id="selectedDateTitle" class="text-xs font-bold text-gray-400 uppercase mb-4 border-b pb-2">GÜN
-                    DETAYI</h3>
-                <div id="dayDetailList" class="space-y-3"></div>
-            </div>
-        </div>
-
-        <!-- TAB 2: BANKALARIM -->
-        <div id="tab-banka" class="tab-content px-4">
-            <div class="flex justify-between items-center mb-6 px-1">
-                <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100">Bankalarım</h2>
-                <button onclick="openAddBank()"
-                    class="bg-[#DA291C] text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-lg shadow-red-200">+
-                    BANKA</button>
-            </div>
-            <div id="bankList" class="space-y-4"></div>
-        </div>
-
-        <!-- TAB 3: DAHA FAZLA -->
-        <div id="tab-more" class="tab-content px-4">
-            <h2 class="text-xl font-bold text-gray-800 dark:text-gray-100 mb-8 px-1">Ayarlar</h2>
-            <div class="space-y-4">
-                <div onclick="changePin()"
-                    class="ak-card p-5 flex items-center justify-between active:bg-gray-50 dark:active:bg-gray-800">
-                    <div class="flex items-center gap-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-red-50 dark:bg-red-900/20 flex items-center justify-center text-lg">
-                            🔑</div>
-                        <div>
-                            <h4 class="text-sm font-bold">Giriş Şifresi</h4>
-                            <p class="text-[10px] text-gray-400">4 haneli güvenliği değiştirin</p>
-                        </div>
-                    </div>
-                    <span class="text-gray-300">❯</span>
-                </div>
-
-                <div class="ak-card p-6">
-                    <div class="flex items-center gap-3 mb-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-lg">
-                            💾</div>
-                        <h4 class="text-sm font-bold">Veri Yedekleme</h4>
-                    </div>
-                    <p class="text-[10px] text-gray-400 mb-4 font-medium">Uygulama yerel çalışır. Verilerinizi manuel
-                        olarak yedekleyip başka telefona aktarabilirsiniz.</p>
-                    <div class="grid grid-cols-2 gap-3">
-                        <button onclick="exportData()"
-                            class="py-3 bg-gray-50 dark:bg-gray-800 border dark:border-gray-700 rounded-xl text-[10px] font-bold text-gray-600 dark:text-gray-300">YEDEK
-                            AL (.json)</button>
-                        <button onclick="document.getElementById('importFile').click()"
-                            class="py-3 bg-gray-900 dark:bg-slate-700 border dark:border-slate-600 text-white rounded-xl text-[10px] font-bold">YEDEK
-                            YÜKLE</button>
-                    </div>
-                    <input type="file" id="importFile" class="hidden" accept=".json" onchange="importData(this)">
-                </div>
-
-                <div onclick="showBonusList()"
-                    class="ak-card p-5 flex items-center justify-between active:bg-gray-50 dark:active:bg-gray-800">
-                    <div class="flex items-center gap-4">
-                        <div
-                            class="w-10 h-10 rounded-full bg-yellow-50 dark:bg-yellow-900/20 flex items-center justify-center text-lg">
-                            ✨</div>
-                        <div>
-                            <h4 class="text-sm font-bold">Bonuslarım</h4>
-                            <p class="text-[10px] text-gray-400">Kart birikmişlerini takip edin</p>
-                        </div>
-                    </div>
-                    <span class="text-gray-300">❯</span>
-                </div>
-
-                <div class="p-8 text-center opacity-30">
-                    <p class="text-[10px] font-bold tracking-widest uppercase">KKTPRO V20.0.0</p>
-                    <p class="text-[9px] mt-1 font-medium">Sercan Topaloğlu Edition &bull; Mükemmellik için tasarlandı.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <!-- TAB 4: BORÇ TAKİBİ -->
-        <div id="tab-borc" class="tab-content">
-            <div id="personListView">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold uppercase">Kişi / Kurum</h2>
-                    <button onclick="openAddPerson()"
-                        class="bg-gray-900 dark:bg-slate-700 text-white px-4 py-2 rounded-xl text-xs font-bold shadow-lg">+
-                        EKLE</button>
-                </div>
-                <div id="personList" class="space-y-3"></div>
-            </div>
-
-            <div id="personDetailView" class="hidden">
-                <div class="bg-white dark:bg-slate-800 p-6 rounded-[2rem] shadow-xl mb-6 relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-2 bg-[#DA291C]"></div>
-                    <div class="absolute top-6 right-6 flex items-center gap-3">
-                        <button onclick="deletePerson()"
-                            class="w-8 h-8 flex items-center justify-center text-sm opacity-20 hover:opacity-100 transition-opacity">🗑️</button>
-                        <button onclick="closePersonDetail()"
-                            class="text-gray-300 hover:text-gray-500 transition-colors text-xl">✕</button>
-                    </div>
-                    <h2 id="detailPersonName" class="text-2xl font-bold mb-1">---</h2>
-                    <p id="detailPersonBalance" class="text-sm font-bold opacity-60 uppercase tracking-tighter">Bakiye:
-                        0,00 TL</p>
-                </div>
-
-                <div class="flex gap-4 mb-8 justify-center">
-                    <button onclick="openTransactionModal('ALACAK')"
-                        class="w-32 h-32 bg-green-600 text-white rounded-[2rem] font-bold text-xs shadow-xl shadow-green-100 flex flex-col items-center justify-center gap-3 uppercase transition-transform active:scale-95">
-                        <span class="text-3xl">⬇️</span> VERDİM
-                    </button>
-                    <button onclick="openTransactionModal('BORC')"
-                        class="w-32 h-32 bg-red-600 text-white rounded-[2rem] font-bold text-xs shadow-xl shadow-red-100 flex flex-col items-center justify-center gap-3 uppercase transition-transform active:scale-95">
-                        <span class="text-3xl">⬆️</span> ALDIM
-                    </button>
-                </div>
-
-                <div class="space-y-3">
-                    <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest px-1">Hareket Geçmişi</h3>
-                    <div id="transactionList" class="space-y-2"></div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- ALT NAVIGASYON -->
-    <nav class="bottom-nav">
-        <button onclick="switchTab('ozet', this)" class="nav-item active">
-            <span class="nav-icon">🏠</span><span>ÖZET</span>
-        </button>
-        <button onclick="switchTab('banka', this)" class="nav-item">
-            <span class="nav-icon">💳</span><span>BANKALAR</span>
-        </button>
-        <button onclick="switchTab('takvim', this)" class="nav-item">
-            <span class="nav-icon">📅</span><span>TAKVİM</span>
-        </button>
-        <button onclick="switchTab('more', this)" class="nav-item">
-            <span class="nav-icon">⚙️</span><span>AYARLAR</span>
-        </button>
-    </nav>
-
-    <!-- MODALLAR -->
-    <div id="bankModal"
-        class="modal-overlay hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 z-[2000]">
-        <div class="modal-content bg-white dark:bg-slate-800 p-6 w-full max-w-sm rounded-[2.5rem] shadow-2xl relative"
-            onclick="event.stopPropagation()">
-            <button onclick="closeModal('bankModal')"
-                class="absolute top-6 right-6 text-gray-300 hover:text-gray-500 transition-colors text-xl">✕</button>
-            <h2 id="bankModalTitle" class="text-xl font-bold mb-6">Banka Ekle</h2>
-            <input type="hidden" id="editBankId">
-            <div class="space-y-4">
-                <div><label class="text-[10px] text-gray-400 font-bold ml-1 uppercase">Banka İsmi</label><input
-                        type="text" id="bankName" placeholder="Ziraat, Enpara..."
-                        class="w-full p-4 bg-gray-50 dark:bg-gray-700 text-sm"></div>
-                <div><label class="text-[10px] text-gray-400 font-bold ml-1 uppercase text-[#DA291C]">Toplam
-                        Limit</label><input type="text" id="bLimit" inputmode="decimal" oninput="maskInput(this)"
-                        placeholder="0,00"
-                        class="w-full p-5 bg-gray-50 dark:bg-gray-700 text-2xl font-bold border-none"></div>
-                <div><label
-                        class="text-[10px] text-gray-400 font-bold ml-1 uppercase text-green-600">Kullanılabilir</label><input
-                        type="text" id="bUsable" inputmode="decimal" oninput="maskInput(this)" placeholder="0,00"
-                        class="w-full p-5 bg-gray-50 dark:bg-gray-700 text-2xl font-bold border-none"></div>
-            </div>
-            <button onclick="saveBank()" class="w-full mt-8 ak-btn-primary py-5">KAYDET</button>
-        </div>
-    </div>
-
-    <div id="cardModal"
-        class="modal-overlay hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 z-[2000]">
-        <div class="modal-content bg-white dark:bg-slate-800 p-6 w-full max-w-sm rounded-[2.5rem] shadow-2xl relative"
-            onclick="event.stopPropagation()">
-            <button onclick="closeModal('cardModal')"
-                class="absolute top-6 right-6 text-gray-300 hover:text-gray-500 transition-colors text-xl">✕</button>
-            <h2 id="cardModalTitle" class="text-xl font-bold mb-6">Kart Detayı</h2>
-            <input type="hidden" id="targetBankId"><input type="hidden" id="editCardIdx">
-            <div class="space-y-4">
-                <div><label class="text-[10px] text-gray-400 font-bold ml-1 uppercase">Kart Etiketi</label><input
-                        type="text" id="cardName" placeholder="Advantage Gold..."
-                        class="w-full p-4 bg-gray-50 dark:bg-gray-700 text-sm"></div>
-                <div><label class="text-[10px] text-gray-400 font-bold ml-1 uppercase">Güncel Ekstre Borcu</label><input
-                        type="text" id="cDebt" inputmode="decimal" oninput="maskInput(this)" placeholder="0,00"
-                        class="w-full p-5 bg-gray-50 dark:bg-gray-700 text-2xl font-bold"></div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div><label class="text-[9px] text-gray-400 font-bold uppercase">Kesim Tarihi</label><input
-                            type="date" id="cCutoff"
-                            class="w-full p-3 bg-gray-50 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-300">
-                    </div>
-                    <div><label class="text-[9px] text-gray-400 font-bold uppercase text-[#DA291C]">Son
-                            Ödeme</label><input type="date" id="cDue"
-                            class="w-full p-3 bg-gray-50 dark:bg-gray-700 text-xs text-gray-600 dark:text-gray-300">
-                    </div>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="text-[9px] text-gray-400 font-bold uppercase text-yellow-500">Birikmiş
-                            Bonus</label>
-                        <input type="text" id="cBonus" inputmode="decimal" oninput="maskInput(this)" placeholder="0,00"
-                            class="w-full p-3 bg-gray-50 dark:bg-gray-700 text-sm font-bold">
-                    </div>
-                    <div>
-                        <label class="text-[9px] text-gray-400 font-bold uppercase">Kesim Hatırlatıcı</label>
-                        <select id="cCutoffLead"
-                            class="w-full p-3 bg-gray-50 dark:bg-gray-700 text-xs rounded-xl border-none">
-                            <option value="-1">İstemiyorum</option>
-                            <option value="0">Gününde</option>
-                            <option value="1">1 Gün Önce</option>
-                            <option value="2">2 Gün Önce</option>
-                            <option value="3">3 Gün Önce</option>
-                            <option value="101">1 Gün Sonra</option>
-                            <option value="102">2 Gün Sonra</option>
-                            <option value="103">3 Gün Sonra</option>
-                            <option value="104">4 Gün Sonra</option>
-                            <option value="105">5 Gün Sonra</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <button onclick="saveCard()" class="w-full mt-6 ak-btn-primary py-5">BİTİR</button>
-        </div>
-    </div>
-
-    <div id="personModal"
-        class="modal-overlay hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 z-[2000]">
-        <div class="modal-content bg-white dark:bg-slate-800 p-6 w-full max-w-sm rounded-[2.5rem] shadow-2xl relative"
-            onclick="event.stopPropagation()">
-            <button onclick="closeModal('personModal')" class="absolute top-4 right-4 text-gray-300">✕</button>
-            <h2 class="text-xl font-bold mb-6">Kişi / Kurum Ekle</h2>
-            <input type="text" id="personName" placeholder="Ad Soyad veya Kurum Adı"
-                class="w-full p-4 bg-gray-50 dark:bg-gray-700 text-sm mb-4 border dark:border-gray-600 rounded-2xl">
-
-            <div class="space-y-3 mb-6">
-                <!-- VADE TOGGLE -->
-                <button id="btnPMainVade" onclick="toggleVadeUI()"
-                    class="w-full p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl flex justify-between items-center group transition-all active:scale-95">
-                    <span class="text-xs font-bold text-gray-500 group-[.active]:text-[#DA291C]">Vade Tarihi Var
-                        mı?</span>
-                    <span class="indicator text-gray-300 group-[.active]:text-[#DA291C]">⚪</span>
-                </button>
-                <input type="hidden" id="pHasVade" value="0">
-
-                <div id="pVadeContainer" class="hidden animate-slideDown">
-                    <label class="text-[9px] text-gray-400 font-bold uppercase ml-1">Vade Tarihi</label>
-                    <input type="date" id="pDueDate" class="w-full p-3 bg-gray-50 dark:bg-gray-700 text-sm rounded-xl">
-                </div>
-
-                <!-- TAKSİT TOGGLE (v17 NEW) -->
-                <button id="btnPMainTaksit" onclick="togglePTaksitUI()"
-                    class="w-full p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl flex justify-between items-center group transition-all active:scale-95">
-                    <span class="text-xs font-bold text-gray-500 group-[.active]:text-green-600 uppercase">Taksit
-                        Seçeneği?</span>
-                    <span class="indicator text-gray-300 group-[.active]:text-green-600">⚪</span>
-                </button>
-                <input type="hidden" id="pIsInstallment" value="0">
-
-                <!-- DIRECT DEBT ENTRY (v20 NEW) -->
-                <div id="pDebtEntryContainer" class="hidden space-y-4 animate-slideDown">
-                    <div class="pt-2 border-t border-gray-100 dark:border-gray-700">
-                        <label class="text-[10px] text-gray-400 font-bold ml-1 uppercase">Borç Tutarı</label>
-                        <input type="text" id="pAmount" inputmode="decimal" oninput="maskInput(this)" placeholder="0,00"
-                            class="w-full p-4 bg-gray-100 dark:bg-gray-700/50 text-xl font-bold border-none rounded-2xl">
-                    </div>
-
-                    <div id="pTaksitArea" class="hidden space-y-3">
-                        <label class="text-[9px] text-gray-400 font-bold uppercase ml-1">Taksit Sayısı ve İlk
-                            Ödeme</label>
-                        <div class="flex gap-2">
-                            <input type="number" id="pTCount" placeholder="Sayı"
-                                oninput="generatePInstallmentRows(this.value)"
-                                class="w-20 p-3 bg-gray-200 dark:bg-gray-600 text-sm rounded-xl font-bold text-center">
-                            <input type="date" id="pTBaseDate"
-                                onchange="generatePInstallmentRows(document.getElementById('pTCount').value)"
-                                class="flex-1 p-3 bg-gray-100 dark:bg-gray-700 text-[10px] rounded-xl font-bold">
-                        </div>
-                        <div id="pInstallmentList" class="space-y-2 max-h-[150px] overflow-y-auto pr-2 custom-scroll">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700/50 rounded-xl">
-                    <span class="text-xs font-bold text-gray-500 italic">Bildirim İstiyor musun?</span>
-                    <select id="pLeadTime" class="p-2 bg-transparent text-[10px] font-bold border-none outline-none">
-                        <option value="-1">İstemiyorum</option>
-                        <option value="0">Gününde</option>
-                        <option value="1" selected>1 Gün Önce</option>
-                        <option value="2">2 Gün Önce</option>
-                        <option value="3">3 Gün Önce</option>
-                        <option value="4">4 Gün Önce</option>
-                        <option value="5">5 Gün Önce</option>
-                        <option value="6">6 Gün Önce</option>
-                        <option value="7">7 Gün Önce</option>
-                    </select>
-                </div>
-            </div>
-
-            <button onclick="savePerson()" class="w-full ak-btn-primary py-5 uppercase font-black text-xs">KİŞİYİ
-                KAYDET</button>
-        </div>
-    </div>
-
-    <div id="transactionModal"
-        class="modal-overlay hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 z-[2000]">
-        <div class="modal-content bg-white dark:bg-slate-800 p-6 w-full max-w-sm rounded-[2.5rem] shadow-2xl relative"
-            onclick="event.stopPropagation()">
-            <button onclick="closeModal('transactionModal')" class="absolute top-4 right-4 text-gray-300">✕</button>
-            <h2 id="transModalTitle" class="text-xl font-bold mb-6">İşlem Yap</h2>
-            <input type="hidden" id="transType">
-            <input type="hidden" id="editTransIdx">
-
-            <div class="space-y-4">
-                <div><label class="text-[10px] text-gray-400 font-bold ml-1 uppercase">Tutar</label><input type="text"
-                        id="tAmount" inputmode="decimal" oninput="maskInput(this)" placeholder="0,00"
-                        class="w-full p-5 bg-gray-50 dark:bg-gray-700 text-2xl font-bold border-none"></div>
-                <div><label class="text-[10px] text-gray-400 font-bold ml-1 uppercase">Açıklama</label><input
-                        type="text" id="tDesc" placeholder="Neden veya Not..."
-                        class="w-full p-4 bg-gray-50 dark:bg-gray-700 text-sm border-none"></div>
-
-                <button id="btnTMainTaksit" onclick="toggleTaksitUI()"
-                    class="w-full p-4 bg-gray-50 dark:bg-gray-700/50 rounded-2xl flex justify-between items-center group transition-all active:scale-95">
-                    <span class="text-xs font-bold text-gray-500 group-[.active]:text-green-600 uppercase">Taksitli
-                        mi?</span>
-                    <span class="indicator text-gray-300 group-[.active]:text-green-600">⚪</span>
-                </button>
-                <input type="hidden" id="tIsInstallment" value="0">
-
-                <div id="taksitContainer"
-                    class="hidden space-y-3 animate-slideDown max-h-[220px] overflow-y-auto pr-2 custom-scroll">
-                    <div class="flex flex-col gap-2">
-                        <label class="text-[9px] text-gray-400 font-bold uppercase ml-1">Taksit Sayısı ve İlk
-                            Ödeme</label>
-                        <div class="flex gap-2">
-                            <input type="number" id="tCount" placeholder="Sayı"
-                                oninput="generateInstallmentRows(this.value)"
-                                class="w-20 p-3 bg-gray-200 dark:bg-gray-600 text-sm rounded-xl font-bold text-center">
-                            <input type="date" id="tBaseDate"
-                                onchange="generateInstallmentRows(document.getElementById('tCount').value)"
-                                class="flex-1 p-3 bg-gray-100 dark:bg-gray-700 text-[10px] rounded-xl font-bold">
-                        </div>
-                    </div>
-                    <div id="installmentList" class="space-y-2"></div>
-                </div>
-            </div>
-
-            <div class="flex gap-2 mt-6">
-                <button id="btnDeleteTrans" onclick="deleteTransaction()"
-                    class="hidden flex-1 bg-gray-100 dark:bg-gray-700 text-gray-400 py-5 rounded-2xl text-[10px] font-bold uppercase">SİL</button>
-                <button onclick="saveTransaction()"
-                    class="flex-[3] ak-btn-primary py-5 uppercase font-black text-xs tracking-widest">İŞLEMİ
-                    KAYDET</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bonus List Modal -->
-    <div id="bonusModal"
-        class="modal-overlay hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center p-6 z-[2000]">
-        <div class="modal-content bg-white dark:bg-slate-800 p-6 w-full max-w-sm rounded-[2.5rem] shadow-2xl relative"
-            onclick="event.stopPropagation()">
-            <button onclick="closeModal('bonusModal')"
-                class="absolute top-6 right-6 text-gray-300 hover:text-gray-500 transition-colors">✕</button>
-            <h2 class="text-xl font-bold mb-6">Bonuslarım</h2>
-            <div id="bonusList" class="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scroll"></div>
-            <div class="mt-6 pt-4 border-t dark:border-gray-700 flex justify-between items-center">
-                <span class="text-xs font-bold text-gray-400 uppercase">TOPLAM BONUS</span>
-                <span id="totalBonusAmount" class="text-lg font-bold text-yellow-600">0,00 TL</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- PREMIUM SHIFRE DEGISTIRME (PIN) -->
-    <div id="pinChangeModal"
-        class="modal-overlay hidden fixed inset-0 bg-black/95 backdrop-blur-md flex items-center justify-center p-6 z-[3000]">
-        <div class="w-full max-w-sm text-white">
-            <div class="mb-8 text-center">
-                <h2 id="pinChangeTitle" class="text-2xl font-bold mb-2 uppercase">GÜVENLİK</h2>
-                <p id="pinChangeStatus" class="opacity-70 text-sm font-medium">Lütfen mevcut şifreyi girin</p>
-            </div>
-
-            <div class="flex gap-6 mb-8 justify-center" id="pinChangeDisplay">
-                <div class="pin-dot"></div>
-                <div class="pin-dot"></div>
-                <div class="pin-dot"></div>
-                <div class="pin-dot"></div>
-            </div>
-
-            <div class="numpad text-white">
-                <style>
-                    #pinChangeModal .num-btn {
-                        color: white !important;
-                        border: 1px solid rgba(255, 255, 255, 0.1);
-                    }
-
-                    #pinChangeModal .pin-dot {
-                        background: rgba(255, 255, 255, 0.2) !important;
-                    }
-
-                    #pinChangeModal .pin-dot.filled {
-                        background: white !important;
-                        box-shadow: 0 0 15px white !important;
-                    }
-                </style>
-                <button class="num-btn" onclick="pressChangePinNum(1)">1</button>
-                <button class="num-btn" onclick="pressChangePinNum(2)">2</button>
-                <button class="num-btn" onclick="pressChangePinNum(3)">3</button>
-                <button class="num-btn" onclick="pressChangePinNum(4)">4</button>
-                <button class="num-btn" onclick="pressChangePinNum(5)">5</button>
-                <button class="num-btn" onclick="pressChangePinNum(6)">6</button>
-                <button class="num-btn" onclick="pressChangePinNum(7)">7</button>
-                <button class="num-btn" onclick="pressChangePinNum(8)">8</button>
-                <button class="num-btn" onclick="pressChangePinNum(9)">9</button>
-                <button class="num-btn" style="background:transparent" onclick="clearChangePin()">C</button>
-                <button class="num-btn" onclick="pressChangePinNum(0)">0</button>
-                <button class="num-btn" style="background:transparent" onclick="closeModal('pinChangeModal')">✕</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="app.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(reg => console.log('Servis İşçisi Kaydedildi:', reg))
-                    .catch(err => console.log('Servis İşçisi Hatası:', err));
-            });
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#007f91" />
+    <meta name="application-name" content="MaarifOS" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MaarifOS" />
+    <meta name="color-scheme" content="light" />
+    <meta name="description" content="T.C. Millî Eğitim Bakanlığı Türkiye Yüzyılı Maarif Modeli Okul Öncesi Millî Müfredat, 528 Ders Kitabı Etkinliği ve Planlama İşletim Sistemi." />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/brand/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/brand/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="./assets/brand/favicon-48.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/brand/apple-touch-icon-180.png" />
+    <link rel="canonical" href="https://www.maarifos.com/" />
+    <meta property="og:url" content="https://www.maarifos.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MaarifOS — Türkiye Yüzyılı Maarif Modeli Öğretmen Ekosistemi" />
+    <meta property="og:description" content="T.C. Millî Eğitim Bakanlığı Okul Öncesi 528 Ders Kitabı Etkinliği, Resmî EK-6 Günlük ve EK-5 Aylık Planlama Terminali." />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://www.maarifos.com/" />
+    <meta name="twitter:title" content="MaarifOS — Türkiye Yüzyılı Maarif Modeli Öğretmen Ekosistemi" />
+    <meta name="twitter:description" content="T.C. Millî Eğitim Bakanlığı Okul Öncesi 528 Ders Kitabı Etkinliği, Resmî EK-6 Günlük ve EK-5 Aylık Planlama Terminali." />
+    <meta name="twitter:image" content="./og.png" />
+    <title>MaarifOS — Okul Öncesi Millî Müfredat & Planlama İşletim Sistemi</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "MaarifOS",
+        "operatingSystem": "All",
+        "applicationCategory": "EducationalApplication",
+        "url": "https://www.maarifos.com",
+        "description": "T.C. MEB Türkiye Yüzyılı Maarif Modeli Okul Öncesi Millî Müfredat, 528 Ders Kitabı Etkinliği ve Otomasyon İşletim Sistemi",
+        "inLanguage": "tr-TR"
+      }
     </script>
-</body>
-
+    <script>
+      (function() {
+        try {
+          var salt = "MAARIFOS_2026_APEX_SECURE_SALT";
+          function cc(input) {
+            var hash = 0x811c9dc5;
+            var str = salt + ":" + input;
+            for (var i = 0; i < str.length; i++) {
+              hash ^= str.charCodeAt(i);
+              hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+            }
+            var hex = (hash >>> 0).toString(16).toUpperCase().padStart(8, "0");
+            return hex.slice(0, 4) + "-" + hex.slice(4, 8);
+          }
+          var sp = new URLSearchParams(window.location.search);
+          var hs = window.location.hash.replace(/^#\/?/, "");
+          var hp = new URLSearchParams(hs);
+          var rawCode = sp.get("code") || sp.get("pin") || sp.get("key") || sp.get("tam") || hp.get("code") || hp.get("pin") || (cc(hs) === "E9A9-14C8" ? hs : null);
+          if (rawCode) {
+            var c = rawCode.trim().toUpperCase();
+            var chk = cc(c);
+            if (chk === "E9A9-14C8" || chk === "D270-6456" || c === "MOS-PRO-2026-KURUCU-MEB-TAM") {
+              var lic = {
+                tier: "pro",
+                ownerName: "Yetkili Öğretmen",
+                schoolName: "",
+                key: c,
+                activatedAtUtc: new Date().toISOString(),
+                expiresAtUtc: ""
+              };
+              localStorage.setItem("maarif_commercial_license_v1", JSON.stringify(lic));
+            }
+            sp.delete("code");
+            sp.delete("pin");
+            sp.delete("key");
+            sp.delete("tam");
+            var rem = sp.toString();
+            var target = window.location.pathname + (rem ? "?" + rem : "");
+            window.history.replaceState(null, document.title, target);
+          }
+        } catch(e) {}
+      })();
+      (function() {
+        try {
+          var h = window.location.hostname;
+          if (h === 'maarifos.net' || h === 'www.maarifos.net') {
+            window.location.replace('https://www.maarifos.com' + window.location.pathname + window.location.search + window.location.hash);
+            return;
+          }
+          if (h === 'maarifos.com') {
+            window.location.replace('https://www.maarifos.com' + window.location.pathname + window.location.search + window.location.hash);
+            return;
+          }
+        } catch(e) {}
+      })();
+    </script>
+    <script>
+      (function() {
+        if (typeof globalThis !== 'undefined') {
+          if (!globalThis.crypto) {
+            globalThis.crypto = {};
+          }
+          if (typeof globalThis.crypto.randomUUID !== 'function') {
+            globalThis.crypto.randomUUID = function() {
+              if (typeof globalThis.crypto.getRandomValues === 'function') {
+                try {
+                  return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, function(c) {
+                    var n = Number(c);
+                    return (n ^ (globalThis.crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (n / 4)))).toString(16);
+                  });
+                } catch(e) {}
+              }
+              return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+                var r = (Math.random() * 16) | 0;
+                var v = c === 'x' ? r : (r & 0x3) | 0x8;
+                return v.toString(16);
+              });
+            };
+          }
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-QLvGEQuY.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-CNC7AqOf.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-core-DKCehLvR.js">
+    <link rel="modulepreload" crossorigin href="./assets/radix-ui-ZN5beF26.js">
+    <link rel="modulepreload" crossorigin href="./assets/motion-gesture-Y1SiFgqY.js">
+    <link rel="modulepreload" crossorigin href="./assets/mobile-BlKhpxbJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-plan-generator-D5KwC6_Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/pdf-preview-model-B_dFj9s2.js">
+    <link rel="modulepreload" crossorigin href="./assets/browser-file-download-DYP6sAg9.js">
+    <link rel="modulepreload" crossorigin href="./assets/teacher-feedback-CUy1RkNN.js">
+    <link rel="modulepreload" crossorigin href="./assets/document-history-CH0zOudk.js">
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-DYl5dUZ5.js">
+    <link rel="modulepreload" crossorigin href="./assets/student-profile-copy-BRd_8_Uv.js">
+    <link rel="modulepreload" crossorigin href="./assets/model-CFgMUrBT.js">
+    <link rel="modulepreload" crossorigin href="./assets/canonical-json-Dzh0gvv6.js">
+    <link rel="modulepreload" crossorigin href="./assets/crypto-4K-x9L64.js">
+    <link rel="modulepreload" crossorigin href="./assets/backup-capacity-BTI_ZaWn.js">
+    <link rel="modulepreload" crossorigin href="./assets/classroom-7YKc37Ya.js">
+    <link rel="modulepreload" crossorigin href="./assets/school-calendar-Cm4XseyA.js">
+    <link rel="modulepreload" crossorigin href="./assets/student-membership-CiGjqu65.js">
+    <link rel="modulepreload" crossorigin href="./assets/attendance-day-breakdown-C9iCZhPA.js">
+    <link rel="modulepreload" crossorigin href="./assets/classroom-scope-C8T4hXXm.js">
+    <link rel="modulepreload" crossorigin href="./assets/student-DIi9B6R6.js">
+    <link rel="modulepreload" crossorigin href="./assets/teacher-followup-B5gmVwyW.js">
+    <link rel="modulepreload" crossorigin href="./assets/teacher-followup-service-xHaV-YqH.js">
+    <link rel="modulepreload" crossorigin href="./assets/tymm-2024-catalog-B3vlHmmn.js">
+    <link rel="modulepreload" crossorigin href="./assets/curriculum-catalog-SXW6JW2e.js">
+    <link rel="modulepreload" crossorigin href="./assets/development-observation-presets-Ir79Apvy.js">
+    <link rel="modulepreload" crossorigin href="./assets/quick-observation-E-Jm7rD8.js">
+    <link rel="modulepreload" crossorigin href="./assets/development-observation-graph-references-C6Xa-ffN.js">
+    <link rel="modulepreload" crossorigin href="./assets/academic-year-operational-BMPNNAfM.js">
+    <link rel="modulepreload" crossorigin href="./assets/classroom-scope-migration-Dhv3nGdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/local-teacher-identity-BmSYQdAp.js">
+    <link rel="modulepreload" crossorigin href="./assets/family-engagement-CS-oDJ_D.js">
+    <link rel="modulepreload" crossorigin href="./assets/play-family-cycle-Ct_UH0eC.js">
+    <link rel="modulepreload" crossorigin href="./assets/home-game-card-model-CygtZP8K.js">
+    <link rel="modulepreload" crossorigin href="./assets/teacher-home-preferences-ZiYzEosY.js">
+    <link rel="modulepreload" crossorigin href="./assets/development-observation-record-CiHiS4TT.js">
+    <link rel="modulepreload" crossorigin href="./assets/development-report-model-BAsRpA69.js">
+    <link rel="modulepreload" crossorigin href="./assets/consent-trips-C96106tT.js">
+    <link rel="modulepreload" crossorigin href="./assets/learning-centers-Bg8xCbng.js">
+    <link rel="modulepreload" crossorigin href="./assets/growth-measurements-nsdTCiPo.js">
+    <link rel="modulepreload" crossorigin href="./assets/class-duty-schedule-DJsNPlXt.js">
+    <link rel="modulepreload" crossorigin href="./assets/school-document-template-CiB5LwQF.js">
+    <link rel="modulepreload" crossorigin href="./assets/teacher-owned-daily-flow-DtmuvnF5.js">
+    <link rel="modulepreload" crossorigin href="./assets/daily-routine-cards-p9AK8tfS.js">
+    <link rel="modulepreload" crossorigin href="./assets/entities-D1Iz0pEg.js">
+    <link rel="modulepreload" crossorigin href="./assets/academic-year-archive-DRfmDBUQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/pedagogical-plan-provenance-D2nM_IBA.js">
+    <link rel="modulepreload" crossorigin href="./assets/domain-CEUvGjhF.js">
+    <link rel="modulepreload" crossorigin href="./assets/official-preschool-value-actions-Drock1z5.js">
+    <link rel="modulepreload" crossorigin href="./assets/value-plan-models-EDUs-B0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/evidence-flow-C1hrG1Xu.js">
+    <link rel="modulepreload" crossorigin href="./assets/binary-zip-CaewnYwi.js">
+    <link rel="modulepreload" crossorigin href="./assets/document-theme-D8MGIVrH.js">
+    <link rel="modulepreload" crossorigin href="./assets/word-document-design-B15oNDfg.js">
+    <link rel="modulepreload" crossorigin href="./assets/official-form-export-service-CMhxlQaY.js">
+    <link rel="modulepreload" crossorigin href="./assets/xlsx-B7qV9TfU.js">
+    <link rel="stylesheet" crossorigin href="./assets/teacher-feedback-CNC8JvjL.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-Crni_9sI.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
